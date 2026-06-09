@@ -15,8 +15,7 @@ export default function Navbar() {
         console.log("No token")
     }
     return (
-        <div className='navContainer 
-        flex items-center justify-between p-5 bg-gray-900 border-b border-gray-400 text-black sticky top-0 z-50'>
+        <div className="flex flex-col md:flex-row items-center justify-between p-3 md:p-5 gap-3 md:gap-6"  >
             <div 
             className="logoTitle text-3xl text-purple-400 font-bold
             ">
