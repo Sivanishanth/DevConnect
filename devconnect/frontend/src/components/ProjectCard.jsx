@@ -6,32 +6,33 @@ import { useState } from "react"
 export default function ProjectCard({ project }) {
 
     const [likes, setLikes] = useState(project.likes?.length || 0)
+    const [isLiking, setIsLiking] = useState(false)
     const token = localStorage.getItem('token')
 
     async function handleLikes(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    
-    // ✅ Check if logged in!
-    if (!token) {
-        alert('Please login to like projects')
-        return
+        e.preventDefault()
+        e.stopPropagation()
+
+        // ✅ Check if logged in!
+        if (!token) {
+            alert('Please login to like projects')
+            return
+        }
+
+        if (isLiking) return
+
+        setIsLiking(true)
+        try {
+            const response = await API.patch(`/project/${project._id}/like`, {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            setLikes(response.data.data.likes.length)
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setIsLiking(false)
+        }
     }
-    
-    if (isLiking) return
-    
-    setIsLiking(true)
-    try {
-        const response = await API.patch(`/project/${project._id}/like`, {}, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        setLikes(response.data.data.likes.length)
-    } catch (err) {
-        console.log(err)
-    } finally {
-        setIsLiking(false)
-    }
-}
     return (
         <div className="projectCard  bg-gradient-to-br from-gray-900 via-purple-400/10 to-gray-600 backdrop-blur-md rounded-xl border border-white/10 p-4 mb-4 shadow-xl flex flex-col items-center text-center
                 hover:bg-white/10 hover:shadow-purple-100/5 md:p-6"
@@ -54,7 +55,8 @@ export default function ProjectCard({ project }) {
                     {project.userID?.name}
                 </Link>
                 <button onClick={handleLikes}
-                    className="text-red-400 hover:text-red-300 cursor-pointer text-sm md:text-base"
+                    disabled={isLiking || !token}
+                    className="text-red-400 hover:text-red-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-sm md:text-base"
                 >❤️{likes}</button>
                 <div className="linksDescription flex gap-3 justify-center mt-2 text-purple-300">
                     <a href={project.githubLink} target="_blank">GitHub</a>
