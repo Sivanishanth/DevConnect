@@ -3,10 +3,17 @@ import { useAuth } from '../context/AuthContext.jsx'
 import {jwtDecode} from 'jwt-decode'
 
 export default function Navbar() {
+    let currentUserId = null
     const { isLoggedIn, logOut } = useAuth()
-    const token = localStorage.getItem('token')
-    const decoded = jwtDecode(token)
-    const currentUserId = decoded.userId
+    try{
+        const token = localStorage.getItem("token")
+        if(token){
+            const decoded = jwtDecode(token)
+            currentUserId = decoded.userId
+        }
+    }catch(err){
+        console.log("No token")
+    }
     return (
         <div className='navContainer 
         flex items-center justify-between p-5 bg-gray-900 border-b border-gray-400 text-black sticky top-0 z-50'>
