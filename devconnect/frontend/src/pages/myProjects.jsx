@@ -52,7 +52,7 @@ export default function MyProject() {
             {errorMsg && <div className="min-h-screen flex items-center justify-center text-white">{errorMsg}</div>}
             {myProject.length === 0 && <div>No Project Yet Created... <br /> Create Your First Project...</div>}
             <div className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg mb-6">
-                <button onClick={() => navigate('/create-projects')}>
+                <button onClick={() => navigate('/create-project')}>
                     + New Project
                 </button>
                 {myProject.map((project) => (
