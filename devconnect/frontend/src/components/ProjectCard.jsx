@@ -21,13 +21,13 @@ export default function ProjectCard({ project }) {
         }
     }
     return (
-        <div className="projectCard  bg-gradient-to-br from-gray-900 via-purple-400/10 to-gray-600 backdrop-blur-md rounded-xl border border-white/10 p-6 mb-4 shadow-xl flex flex-col items-center text-center
-                hover:bg-white/10 hover:shadow-purple-100/5"
+        <div className="projectCard  bg-gradient-to-br from-gray-900 via-purple-400/10 to-gray-600 backdrop-blur-md rounded-xl border border-white/10 p-4 mb-4 shadow-xl flex flex-col items-center text-center
+                hover:bg-white/10 hover:shadow-purple-100/5 md:p-6"
         >
-            <div className="link">
+            <div className="link w-full">
                 <Link to={`/project/${project._id}`}>
-                    <h2 className="text-xl font-bold text-gray-400 mb-2">{project.title}</h2>
-                    <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+                    <h2 className="text-xl font-bold text-gray-400 mb-2 md:text-xl">{project.title}</h2>
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4 justify-center">
                         {
                             (project.techStack || []).map((tech) => (

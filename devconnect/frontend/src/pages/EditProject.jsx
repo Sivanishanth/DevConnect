@@ -64,30 +64,32 @@ export default function EditProject() {
         }
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="min-h-screen p-4 md:p-8">
+            <form onSubmit={handleSubmit} 
+            className="max-w-2xl mx-auto"
+            >
                 <input type="text"
                     placeholder="Title"
-                    className=" text-center w-90 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-300"
+                    className=" text-center w-full mb-4 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-300"
                     value={Title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
 
                 <textarea placeholder="Description"
-                    className="w-full h-32 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
+                    className="w-full h-32 mb-4 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
                     value={Description}
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
 
                 <input type="text"
                     placeholder="Skills"
-                    className=" text-center w-90 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-300"
+                    className=" text-center w-full mb-4 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-300"
                     value={SelectedSkill}
                     onChange={(e) => setSelectedSkill(e.target.value)}
                 />
+                <div className="flex flex-wrap gap-2 mb-4">
                 <button type="button" onClick={HandelAddSkills}>Add</button>
 
-                <div className="flex flex-wrap gap-2 mb-4">
                     {
                         Skills.map((skills) => (
                             <div className="inline-block bg-purple-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2" key={skills}>

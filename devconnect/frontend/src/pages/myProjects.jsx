@@ -47,20 +47,20 @@ export default function MyProject() {
         fetchProject()
     }, [])
     return (
-        <div className="myProjectPage">
-            {loading && <div>Loading...</div>}
-            {errorMsg && <div className="text-red-500">{errorMsg}</div>}
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 p-4 md:p-8        ">
+            {loading && <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>}
+            {errorMsg && <div className="min-h-screen flex items-center justify-center text-white">{errorMsg}</div>}
             {myProject.length === 0 && <div>No Project Yet Created... <br /> Create Your First Project...</div>}
-            <div className="">
-                <button onClick={() => navigate('/create-project')}>
+            <div className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg mb-6">
+                <button onClick={() => navigate('/create-projects')}>
                     + New Project
                 </button>
                 {myProject.map((project) => (
                     <div key={project._id}>
                         <ProjectCard project={project} />
 
-                        <button type="button" onClick={() => handleDelete(project._id)}>🗑️ Delete</button>
-                        <button type="button" onClick={() => navigateToEdit(project._id)}>📝 Edit</button>
+                        <button type="button" className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm mr-2" onClick={() => handleDelete(project._id)}>🗑️ Delete</button>
+                        <button type="button" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm" onClick={() => navigateToEdit(project._id)}>📝 Edit</button>
                     </div>
                 ))}
             </div>

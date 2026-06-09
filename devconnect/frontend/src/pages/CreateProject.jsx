@@ -58,25 +58,25 @@ export default function CreateProject() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 p-6">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 md:p-6">
             <form onSubmit={HandelSubmit}
-            className="max-w-2xl mx-auto bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-2xl p-8"
+            className="max-w-2xl mx-auto bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-2xl md:p-8"
             >
                 <input type="text"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
+                className="w-full mb-4 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
                     value={Title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                     required />
                 <textarea
-                    className="w-full h-32 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
+                    className="w-full mb-4 h-32 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
                     value={Description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Description">
                 </textarea>
                 <label htmlFor="">
                     <input type="text"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
+                    className="w-full mb-4 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400"
                         value={SelectedSkill}
                         onChange={(e) => setSelectedSkill(e.target.value)}
                     />
@@ -85,7 +85,7 @@ export default function CreateProject() {
                     type="button" onClick={HandelAddSkills}>Add</button>
                 </label>
                 <label className="block text-white mb-3 font-semibold">Selected Skills</label>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-col sm:flex-row gap-2">
                     {
                         Skills.map((skills) => (
                             <div className="inline-block bg-purple-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2" key={skills}>
