@@ -29,7 +29,7 @@ export default function Navbar() {
                         <Link to='/'
                          className="text-purple-400 hover:text-purple-300 text-sm mr-4"
                         >Home</Link>
-                        <Link to='/my-project'
+                        <Link to='/my-projects'
                         className="text-purple-400 hover:text-purple-300 text-sm"
                         >MyProject</Link>
                         <Link to={`/profile/${currentUserId}`}>👤</Link>
