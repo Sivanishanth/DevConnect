@@ -26,8 +26,8 @@ export default function ProjectCard({ project }) {
         >
             <div className="link w-full">
                 <Link to={`/project/${project._id}`}>
-                    <h2 className="text-xl font-bold text-gray-400 mb-2 md:text-xl">{project.title}</h2>
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
+                    <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-400 mb-2">{project.title}</h2>
+                    <p className="text-xs md:text-sm text-gray-400 mb-4 line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4 justify-center">
                         {
                             (project.techStack || []).map((tech) => (
@@ -42,7 +42,7 @@ export default function ProjectCard({ project }) {
                     {project.userID?.name}
                 </Link>
                 <button onClick={handleLikes}
-                    className="text-red-400 hover:text-red-300 cursor-pointer"
+                    className="text-red-400 hover:text-red-300 cursor-pointer text-sm md:text-base"
                 >❤️{likes}</button>
                 <div className="linksDescription flex gap-3 justify-center mt-2 text-purple-300">
                     <a href={project.githubLink} target="_blank">GitHub</a>
