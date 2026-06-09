@@ -7,13 +7,12 @@ export default function ProjectCard({ project }) {
 
     const [likes, setLikes] = useState(project.likes?.length || 0)
     const [isLiking, setIsLiking] = useState(false)
-    const token = localStorage.getItem('token')
 
     async function handleLikes(e) {
         e.preventDefault()
         e.stopPropagation()
 
-        // ✅ Check if logged in!
+        const token = localStorage.getItem('token')  
         if (!token) {
             alert('Please login to like projects')
             return
@@ -55,7 +54,7 @@ export default function ProjectCard({ project }) {
                     {project.userID?.name}
                 </Link>
                 <button onClick={handleLikes}
-                    disabled={isLiking || !token}
+                    disabled={isLiking || !localStorage.getItem('token')}  // ✅ Check fresh!
                     className="text-red-400 hover:text-red-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-sm md:text-base"
                 >❤️{likes}</button>
                 <div className="linksDescription flex gap-3 justify-center mt-2 text-purple-300">
